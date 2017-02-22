@@ -28,11 +28,12 @@
      <ul>
        <li><a href="<%=path %>/index.jsp">网站首页</a></li>
        <li><a href="<%=path %>/view/about.jsp">关于我</a></li>
-       <li><a href="moodlist.html">碎言碎语</a></li>
-       <li><a href="newlist.html">技术探讨</a></li>
-       <li><a href="newlist.html">慢生活</a></li>
-       <li><a href="ablumlist.html">我的相册</a></li>
-       <li><a href="book.html">留言版</a></li>
+       <li><a href="<%=path %>/view/moodlist.jsp">碎言碎语</a></li>
+       <li><a href="<%=path %>/view/newlist.jsp">技术探讨</a></li>
+       <!-- <li><a href="newlist.html">慢生活</a></li> -->
+       <li><a href="<%=path %>/view/caselist.jsp">我的相册</a></li>
+       <li><a href="<%=path %>/view/book.jsp">留言版</a></li>
+       
      </ul>
 </div>
 <div class="blank"></div>

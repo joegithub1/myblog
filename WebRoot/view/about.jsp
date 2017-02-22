@@ -24,7 +24,7 @@
       <p>我喜欢集邮票，一本小小的集邮册汇集了各个地方,有汽车、花、鸟、奥运会、建筑、人文地理等等，每枚邮票都是一件小型的艺术品，不在乎面值有多少，在乎的是集邮的过程，那是一种乐趣&hellip;&hellip; </p>
     </ul>
 </div>
-<aside class="navsidebar">  
+<%-- <aside class="navsidebar">  
     <img class="about_p" src="<%=path %>/static/images/aboutphoto.jpg"> 
     <div class="geyan"><p>每个作品都有自己的灵魂，只要灵魂发挥极致，那么成功就在眼前！</p></div>
     <div class="about_c">网名：DanceSmile | 即步非烟<br>
@@ -36,7 +36,8 @@
       喜欢的音乐：《burning》《just one last dance》《相思引》<br>
       作品展示：部分作品<br>
       联系方式：Q Q、Email、MSN</div>    
-</aside>
+</aside> --%>
+<%@ include file="aboutmy.jsp" %>
 </div>
 
 <%@ include file="footer.jsp" %>

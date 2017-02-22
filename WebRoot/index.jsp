@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ include file="/view/header.jsp" %>  
-
+  
+<%@ include file="/view/header.jsp" %> 
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -15,6 +14,7 @@
 <![endif]-->
 </head>
 <body>
+
 <div class="article">
   <div class="content">
     <div class="topblog">
@@ -253,7 +253,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
         <p>...</p>
       </section>
      </ul>   
-      <div id="copright">Design by DanceSmile  <a href="/">蜀ICP备11002373号-1</a></div>
+      <%@ include file="view/footer.jsp" %>
 </div>
 <script src="<%=path %>/static/js/silder.js"></script>
 <script type="text/javascript">
