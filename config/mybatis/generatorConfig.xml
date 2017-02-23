@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+ 
+ 
+<generatorConfiguration>
+<classPathEntry location=""/>
+	<context id="context" targetRuntime="myBatis">
+	   <commentGenerator>
+	   
+	   <!-- **阻止**生成注释，默认为false -->
+	   	<property name="suppressAllComments" value="true"/>
+	   	<!-- **阻止**生成的注释包含时间戳，默认为false  -->
+	   	<property name="suppressDate" value="true"/>
+	   </commentGenerator>
+	   <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql//101.201.209.55:3306/yundongjia" userId="root" password="hydfkj"></jdbcConnection>
+	
+		<!-- model -->
+		<javaModelGenerator targetPackage="com.joe.myblog.oa.po" targetProject="\.src">
+			<property name="trimStrings" value="true"/>
+			<property name="enableSubPackages" value="false"/>
+		</javaModelGenerator>
+		
+		<!-- mapper -->
+		<sqlMapGenerator targetPackage="com.joe.myblog.oa.mapper" targetProject="\.src"></sqlMapGenerator>
+		
+		<!-- XML -->
+		<javaClientGenerator 
+		 targetPackage="" 
+		 type="XMLMAPPER" 
+		 targetProject=""></javaClientGenerator>
+		
+		<table tableName=""></table>
+		
+		
+	</context>
+
+</generatorConfiguration>
