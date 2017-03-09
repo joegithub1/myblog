@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ 
+<%@ include file="/WEB-INF/view/header.jsp" %>
   
-<%@ include file="/view/header.jsp" %> 
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -12,9 +13,14 @@
 <!--[if lt IE 9]>
 <script src="<%=path %>/static/js/modernizr.js"></script>
 <![endif]-->
+<script type="text/javascript">
+function t(){
+	window.location.href="<%=path%>/blog/test";
+}
+</script>
 </head>
 <body>
-
+<button onclick="t();">点击</button>
 <div class="article">
   <div class="content">
     <div class="topblog">
@@ -253,7 +259,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
         <p>...</p>
       </section>
      </ul>   
-      <%@ include file="view/footer.jsp" %>
+      <%@ include file="/WEB-INF/view/footer.jsp" %>
 </div>
 <script src="<%=path %>/static/js/silder.js"></script>
 <script type="text/javascript">
