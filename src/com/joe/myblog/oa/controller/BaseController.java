@@ -27,7 +27,7 @@ public class BaseController {
 	}
 	
 	protected Integer getLogUserId() {
-		
+		System.out.println("hello word");
 		return 1;
 	}
 }
