@@ -27,7 +27,7 @@ public class BaseController {
 	}
 	
 	protected Integer getLogUserId() {
-		System.out.println("hello word");
+		System.out.println("hello word---冲突文件 同时更改一行代码");
 		return 1;
 	}
 }
