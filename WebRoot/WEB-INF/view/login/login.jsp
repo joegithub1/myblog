@@ -33,18 +33,19 @@ String path=request.getContextPath();
 	  <div id="login-page">
 	  	<div class="container">
 	  	
-		      <form class="form-login" >
+		      <form class="form-login" action="<%=path%>/blog/bloglogin" method="post">
 		        <h2 class="form-login-heading">sign in now</h2>
 		        <div class="login-wrap">
-		            <input type="text" class="form-control" placeholder="请输入用户名" autofocus>
+		            <input type="text" name="backuserMobliePhone" class="form-control" placeholder="请输入用户名" value="12345678901" autofocus>
 		            <br>
-		            <input type="password" class="form-control" placeholder="请输入密码">
+		            <input type="password" name="backuserPwd" class="form-control" placeholder="请输入密码" value="123456">
 		            <label class="checkbox">
 		                <span class="pull-right">
 		                    <a data-toggle="modal" href="login.html#myModal">忘记密码</a>
 		
 		                </span>
 		            </label>
+		            <div  style="color: #F00;margin:0;padding:0;width: auto;" id="error">${err}</div>
 		            <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> 登 录</button>
 		            <hr>
 		            

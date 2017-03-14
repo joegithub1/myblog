@@ -21,14 +21,60 @@
 <!-- Custom styles for this template -->
 <link href="<%=path %>/static/assets/css/style.css" rel="stylesheet">
 <link href="<%=path %>/static/assets/css/style-responsive.css" rel="stylesheet">
-
+<script src="<%=path %>/static/assets/js/jquery.js"></script>
+<script src="<%=path %>/static/assets/js/jquery-1.8.3.min.js"></script>
 <script src="<%=path %>/static/assets/js/chart-master/Chart.js"></script>
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-
+<script type="text/javascript">
+/* <li class="sub-menu">
+<a href="javascript:;" >
+    <i class="fa fa-desktop"></i>
+    <span>UI Elements</span>
+</a>
+<ul class="sub">
+    <li><a  href="general.html">General</a></li>
+    <li><a  href="buttons.html">Buttons</a></li>
+    <li><a  href="panels.html">Panels</a></li>
+</ul>
+</li> */
+var data;
+function getRightPage(i, j) {
+	var t=new Date().valueOf();
+    var url = "<%=path%>"+data.list[i].menu[j].menuPathname+"?_time="+t;
+    console.log(url);
+     $.ajax({
+        type:"POST",
+        url:url,
+        cache: false,
+        processData: false,
+        sync:false,
+        dataType:'text',
+        success:function(data){
+            $("#right-page").html(data);
+        }
+    });
+   // document.getElementById("rightContent").src = "<%=path%>" + data.list[i].menu[j].menuPathname;
+}
+$(function(){
+	data=${sessionScope.userVo.menuJson};
+	
+	for(var i=0;i<data.list.length;i++){
+		$("#nav-accordion").append("<li id="+i+" class='sub-menu'></li>");
+		for(var j=0;j<data.list[i].menu.length;j++){
+			if(data.list[i].menu[j].menuIsroot == 1){
+				$("#"+i).append('<a href="javascript:void(0);" ><i class="fa fa-desktop"></i><span>'+data.list[i].menu[j].menuName+'</span></a>     ');
+				$("#"+i).append("<ul id='list"+i+"' class='sub'> </ul> ");
+			}else{
+				$("#list"+i).append("<li><a onclick='getRightPage("+i+","+j+")' href='javascript:void(0);'>"+data.list[i].menu[j].menuName+"</a></li>");
+			}
+		}
+	}
+});
+</script>
 </head>
 <body>
 
@@ -188,7 +234,7 @@
             
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">Logout</a></li>
+                    <li><a class="logout" href="<%=path %>/blog/logout">安全退出</a></li>
             	</ul>
             </div>
         </header>
@@ -204,7 +250,7 @@
               <ul class="sidebar-menu" id="nav-accordion">
               
               	  <p class="centered"><a href="profile.html"><img src="<%=path %>/static/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered">Marcel Newman</h5>
+              	  <h5 class="centered">${sessionScope.userVo.user.backuserName }</h5>
               	  	
                   <li class="mt">
                       <a class="active" href="index.html">
@@ -219,9 +265,9 @@
                           <span>UI Elements</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="general.html">General</a></li>
-                          <li><a  href="buttons.html">Buttons</a></li>
-                          <li><a  href="panels.html">Panels</a></li>
+                          <li><a  href="#">General</a></li>
+                          <li><a  href="javascript:void(0);">Buttons</a></li>
+                          <li><a  href="javascript:void(0);">Panels</a></li>
                       </ul>
                   </li>
 
@@ -250,21 +296,20 @@
 
       <!--main content end-->
       <!--footer start-->
-      <footer class="site-footer">
+     <!--  <footer class="site-footer">
           <div class="text-center">
-              2014 - Alvarez.is
+              2014 - Alvarez.is home
               <a href="index.html#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
           </div>
-      </footer>
+      </footer> -->
       <!--footer end-->
   </section>
 
 
 <!-- js placed at the end of the document so the pages load faster -->
-    <script src="<%=path %>/static/assets/js/jquery.js"></script>
-    <script src="<%=path %>/static/assets/js/jquery-1.8.3.min.js"></script>
+    
     <script src="<%=path %>/static/assets/js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="<%=path %>/static/assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="<%=path %>/static/assets/js/jquery.scrollTo.min.js"></script>
@@ -331,6 +376,7 @@
         
         
         function myNavFunction(id) {
+        	console.log(id);
             $("#date-popover").hide();
             var nav = $("#" + id).data("navigation");
             var to = $("#" + id).data("to");

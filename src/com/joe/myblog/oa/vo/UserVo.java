@@ -3,6 +3,9 @@ package com.joe.myblog.oa.vo;
 
 import java.util.List;
 
+import com.joe.myblog.oa.po.TAdmin;
+import com.joe.myblog.oa.po.TMenu;
+
 
 
 /**
@@ -12,9 +15,9 @@ public class UserVo {
 
 
 
-    //private List<TMenu> menuList ;
+    private List<TMenu> menuList ;
 
-    //private TAdmin user;
+    private TAdmin user;
 
     private String menuJson;
 
@@ -54,5 +57,23 @@ public class UserVo {
     public static final int ROLE_NOT_CLOSE = 0;
     //权限被删除
     public static final int ROLE_IS_DEL = 1;
-
+	public List<TMenu> getMenuList() {
+		return menuList;
+	}
+	public void setMenuList(List<TMenu> menuList) {
+		this.menuList = menuList;
+	}
+	public TAdmin getUser() {
+		return user;
+	}
+	public void setUser(TAdmin user) {
+		this.user = user;
+	}
+	public String getMenuJson() {
+		return menuJson;
+	}
+	public void setMenuJson(String menuJson) {
+		this.menuJson = menuJson;
+	}
+    
 }

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.joe.myblog.oa.mapper.TAdminMapper" >
+  <resultMap id="BaseResultMap" type="com.joe.myblog.oa.po.TAdmin" >
+    <id column="backuser_id" property="backuserId" jdbcType="INTEGER" />
+    <result column="backuser_name" property="backuserName" jdbcType="VARCHAR" />
+    <result column="backuser_pwd" property="backuserPwd" jdbcType="VARCHAR" />
+    <result column="backuser_role_id" property="backuserRoleId" jdbcType="INTEGER" />
+    <result column="backuser_moblie_phone" property="backuserMobliePhone" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    backuser_id, backuser_name, backuser_pwd, backuser_role_id, backuser_moblie_phone
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.joe.myblog.oa.po.TAdminExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_admin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_admin
+    where backuser_id = #{backuserId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_admin
+    where backuser_id = #{backuserId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.joe.myblog.oa.po.TAdminExample" >
+    delete from t_admin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.joe.myblog.oa.po.TAdmin" >
+    <selectKey resultType="java.lang.Integer" keyProperty="backuserId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_admin (backuser_name, backuser_pwd, backuser_role_id, 
+      backuser_moblie_phone)
+    values (#{backuserName,jdbcType=VARCHAR}, #{backuserPwd,jdbcType=VARCHAR}, #{backuserRoleId,jdbcType=INTEGER}, 
+      #{backuserMobliePhone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.joe.myblog.oa.po.TAdmin" >
+    <selectKey resultType="java.lang.Integer" keyProperty="backuserId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_admin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="backuserName != null" >
+        backuser_name,
+      </if>
+      <if test="backuserPwd != null" >
+        backuser_pwd,
+      </if>
+      <if test="backuserRoleId != null" >
+        backuser_role_id,
+      </if>
+      <if test="backuserMobliePhone != null" >
+        backuser_moblie_phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="backuserName != null" >
+        #{backuserName,jdbcType=VARCHAR},
+      </if>
+      <if test="backuserPwd != null" >
+        #{backuserPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="backuserRoleId != null" >
+        #{backuserRoleId,jdbcType=INTEGER},
+      </if>
+      <if test="backuserMobliePhone != null" >
+        #{backuserMobliePhone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.joe.myblog.oa.po.TAdminExample" resultType="java.lang.Integer" >
+    select count(*) from t_admin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_admin
+    <set >
+      <if test="record.backuserId != null" >
+        backuser_id = #{record.backuserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.backuserName != null" >
+        backuser_name = #{record.backuserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.backuserPwd != null" >
+        backuser_pwd = #{record.backuserPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.backuserRoleId != null" >
+        backuser_role_id = #{record.backuserRoleId,jdbcType=INTEGER},
+      </if>
+      <if test="record.backuserMobliePhone != null" >
+        backuser_moblie_phone = #{record.backuserMobliePhone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_admin
+    set backuser_id = #{record.backuserId,jdbcType=INTEGER},
+      backuser_name = #{record.backuserName,jdbcType=VARCHAR},
+      backuser_pwd = #{record.backuserPwd,jdbcType=VARCHAR},
+      backuser_role_id = #{record.backuserRoleId,jdbcType=INTEGER},
+      backuser_moblie_phone = #{record.backuserMobliePhone,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.joe.myblog.oa.po.TAdmin" >
+    update t_admin
+    <set >
+      <if test="backuserName != null" >
+        backuser_name = #{backuserName,jdbcType=VARCHAR},
+      </if>
+      <if test="backuserPwd != null" >
+        backuser_pwd = #{backuserPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="backuserRoleId != null" >
+        backuser_role_id = #{backuserRoleId,jdbcType=INTEGER},
+      </if>
+      <if test="backuserMobliePhone != null" >
+        backuser_moblie_phone = #{backuserMobliePhone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where backuser_id = #{backuserId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.joe.myblog.oa.po.TAdmin" >
+    update t_admin
+    set backuser_name = #{backuserName,jdbcType=VARCHAR},
+      backuser_pwd = #{backuserPwd,jdbcType=VARCHAR},
+      backuser_role_id = #{backuserRoleId,jdbcType=INTEGER},
+      backuser_moblie_phone = #{backuserMobliePhone,jdbcType=VARCHAR}
+    where backuser_id = #{backuserId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 根据用户手机号码查询 -->
+  <select id="selectByUserName" parameterType="com.joe.myblog.oa.po.TAdmin"  resultMap="BaseResultMap">
+  	select * from t_admin where backuser_Moblie_Phone = #{backuserMobliePhone,jdbcType=VARCHAR}
+  </select>
+  
+  
+  <select id="selectByGYMUserName" parameterType="com.joe.myblog.oa.po.TAdmin"  resultMap="BaseResultMap" resultType="com.joe.myblog.oa.po.TAdmin">
+       <!--  SELECT * FROM t_admin WHERE backuser_Moblie_Phone=#{backuserMobliePhone,jdbcType=VARCHAR} -->
+    </select>
+    <!-- 更新会员卡密码 -->
+	<update id="updateByPhone" parameterType="java.util.Map">
+		<!-- update t_admin set backuserPwd = #{password} where backuserMobliePhone = #{mobilphone} -->
+	</update>
+	<!-- 删除角色时，把用户角色值0 -->
+	<update id="updateBaseUserRoleByRoleIds" parameterType="java.util.Map">
+	   <!-- update t_admin set backuserRoleId = 0 where backuserRoleId = #{param.roleId} -->
+	</update>
+	<!--hj 查询用户  -->
+	<select id="selectUser" parameterType="java.util.Map" resultType="java.util.Map">
+		select * from t_admin order by backuser_id desc 
+	</select>
+	<!-- 根据场馆与角色ID查询信息  -->
+	<select id="searchBUByTypeARole" parameterType="java.util.Map" resultType="java.util.Map">
+		<!-- select * from t_admin where backuserRoleId = #{roleId} order by backuserId desc -->
+	</select>
+	<!-- 查询会员手机号是否注册 -->
+	<select id="selectByPhone" parameterType="java.util.Map" resultType="java.lang.Integer">
+		<!-- select backuserId from t_admin where backuserMobliePhone = #{mobilephone} -->
+	</select>
+  
+  
+  
+  
+  
+  
+</mapper>
