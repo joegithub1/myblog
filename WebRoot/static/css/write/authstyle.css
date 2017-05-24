@@ -1,0 +1,5 @@
+.auth li:hover{
+ background-color: #033254;
+	color: #4a87c4;
+	cursor: pointer;
+}

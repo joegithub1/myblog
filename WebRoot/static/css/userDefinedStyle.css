@@ -1,0 +1,16 @@
+/* 操作按钮样式 */
+.content-panel h4{
+text-align: right;
+margin: 10px;
+}
+/* form 样式 */
+.form-horizontal.style-form .form-group{
+ padding-bottom: 0px;
+}
+
+.content-panel .col-md-12{
+	padding:0px 5px 5px 5px;
+}
+.content-panel .col-md-4{
+	text-align: right;
+}

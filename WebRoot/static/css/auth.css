@@ -1,0 +1,110 @@
+
+/*========权限管理==========*/
+.menu-list .firstUL{
+	width:60%;
+	padding-left: 65px;
+}
+
+
+/*    ../images/skt/icon_all.png     */
+.authManage .add-btn a {
+    background-image: url(../images/skt/icon_all.png);
+    background-position: -108px -101px;
+    background-repeat: no-repeat;
+    padding: 4px 20px;
+}
+
+.authManage .modal-body:nth-of-type(1) {
+    padding-right: 70px;
+}
+.authManage .modal-body:nth-of-type(2) {
+    /* padding-left: 120px;
+    padding-right: 120px; */
+}
+
+.authManage .modal-body .checkbox label {
+    line-height: 38px;
+}
+
+.authManage .modal-body .form-group ul>li {
+    font-size: 14px;
+    padding-left: 18px;
+    line-height: 40px;
+    color: #555555;
+}
+
+.authManage .modal-body .menu-list ul>li>.checkbox {
+    position: relative;
+}
+
+.authManage .modal-body .menu-list>ul>li,
+.authManage .modal-body .menu-list>ul>li>ul>li {
+    background: url(../images/skt/icon_all.png) -480px -458px no-repeat;
+}
+
+.authManage .modal-body .menu-list>ul>li.active,
+.authManage .modal-body .menu-list>ul>li>ul>li.active {
+    background-position: -112px 25px;
+}
+
+.authManage .modal-body .menu-list ul>li>.checkbox input {
+    position: absolute;
+    right: 125px;
+    top: 8px;
+}
+
+.authManage .modal-body.auth-given ul {
+    height: 200px;
+    background-color: #f1f1f1;
+    overflow: auto;
+}
+
+.authManage .modal-body.auth-given ul>li {
+    font-size: 14px;
+    padding-left: 18px;
+    line-height: 40px;
+    color: #555555;
+}
+
+.authManage .modal-body.auth-given ul>li:hover,
+.authManage .modal-body.auth-given ul>li.active {
+    background-color: #00aaef;
+    color: white;
+    cursor: pointer;
+}
+
+.authManage .modal-body.auth-given .del {
+    padding: 20px 0;
+}
+
+.authspan {
+    cursor: pointer;
+
+
+}
+
+.authdiv{
+    margin:7px 0 0 15px ;
+    float: left;
+
+}
+
+.clean{
+    clear: both;
+}
+
+.authcheckbox{
+    float: right;
+}
+
+
+/* ul>li> 子菜单 */
+.authManage .modal-body .menu-list .subcheckbox{
+	border:0px solid blue;
+	width:259px;
+}
+
+.authManage .modal-body .menu-list .subsubcheckbox{
+	border:0px solid red;
+	width:200px;
+}
