@@ -57,14 +57,32 @@ public interface TAdminMapper {
 	
 	/**
 	* Title: TAdminMapper.java
-	* Description: 
+	* Description: 查询所有的用户
 	* @param parm
 	* @return
 	* @author HuangJian
 	* @date 2017年3月13日
 	*/
 	List<Map<String, Object>> selectUser(Map<String, Object> parm);
-	List<Map<String, Object>> searchBUByTypeARole(Map<String, Object> param);
+	/**
+	* Title: TAdminMapper.java
+	* Description: 根据角色查询用户
+	* @param param
+	* @return
+	* @author HuangJian
+	* @date 2017年4月8日
+	*/
+	List<Map<String, Object>> selectBUByTypeARole(Map<String, Object> param);
 
-	Integer selectByPhone(Map<String, Object> param);
+	/**
+	* Title: TAdminMapper.java
+	* Description: 查询手机号码是否被注册过 返回总数
+	* @param param
+	* @return
+	* @author HuangJian
+	* @date 2017年5月9日
+	*/
+	Integer selectByPhone(@Param("mobilephone") String mobilephone);
+	
+	 
 }

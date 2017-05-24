@@ -1,5 +1,6 @@
 package com.joe.myblog.oa.service.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -91,7 +92,8 @@ public class MenuServiceImpl implements MenuService {
         }
 
         for (MenuVo mv : tlist){
-            if (mv.getMenuVoList().size() > 0){
+        	//原来  mv.getMenuVoList().size() > 0
+            if (mv.getMenuVoList().size() >= 0){
                 list.add(mv);
             }
         }
@@ -129,7 +131,8 @@ public class MenuServiceImpl implements MenuService {
 
 	@Override
 	public int saveBaseMenu(TMenu menu,boolean isRoot) {
-		
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		menu.setMenuCreateDate(sdf.format(new Date()));
 		int id = baseMenuMapper.insertSelective(menu);
 		if(isRoot){
 			TMenu record=new TMenu();
@@ -218,6 +221,17 @@ public class MenuServiceImpl implements MenuService {
 		TMenuExample example=new TMenuExample();
 		example.createCriteria().andMenuPoweridEqualTo(pwoerid).andMenuIsdelEqualTo((byte)0);
 		
+		return baseMenuMapper.selectByExample(example);
+	}
+
+	@Override
+	public List<TMenu> getMenuByRoot(Integer isRoot) {
+		
+		TMenuExample example = new TMenuExample();
+		example.createCriteria()
+		.andMenuIsdelEqualTo((byte)0)
+		.andMenuIsrootEqualTo((byte)isRoot.intValue());
+		example.setOrderByClause("menu_create_date desc");
 		return baseMenuMapper.selectByExample(example);
 	}
 	

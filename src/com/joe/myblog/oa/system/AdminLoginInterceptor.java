@@ -36,24 +36,16 @@ public class AdminLoginInterceptor implements HandlerInterceptor {
         String contextPath = request.getContextPath();
         String uri = request.getServletPath();
         System.out.println("contextPath  :"+  contextPath);
-        /*if (request.getSession().getAttribute("userVo") == null){
-        	if (uri.startsWith("/tc/") ){
-            	PrintWriter out = response.getWriter();  
-                out.println("<html>");      
-                out.println("<script>");      
-                out.println("window.location ='"+contextPath+"/tc'");      
-                out.println("</script>");      
-                out.println("</html>");
-            }else {
-                PrintWriter out = response.getWriter();  
-                out.println("<html>");      
-                out.println("<script>");      
-                out.println("window.location ='"+contextPath+"/myblog'");      
-                out.println("</script>");      
-                out.println("</html>");
-            }
+        if (request.getSession().getAttribute("userVo") == null){
+        	PrintWriter out = response.getWriter();  
+            out.println("<html>");      
+            out.println("<script>");      
+            out.println("window.location ='"+contextPath+"/blog'");      
+            out.println("</script>");      
+            out.println("</html>");
+        	
             return false;
-        }*/
+        }
 		return true;
 	}
 

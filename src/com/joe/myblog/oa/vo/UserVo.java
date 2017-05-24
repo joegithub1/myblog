@@ -21,7 +21,7 @@ public class UserVo {
 
     private String menuJson;
 
-  
+    private int pattern;
 
     //禁用
     public static final int USER_STATUS_JIN = 0;
@@ -36,12 +36,12 @@ public class UserVo {
     public static final int USER_TYPE_STUDIO_ADMIN = 2;
     public static final int USER_TYPE_STUDIO_WORK = 3;
 
-    //验证result
+    //验证result 用户名不存在
     public static final int USER_VAIL_RESULT_NULL = 0;
-    //总控系统
-    public static final int USER_VAIL_RESULT_ZONG = 1;
-    //健身房系统
-    public static final int USER_VAIL_RESULT_JIAN = 2;
+    //
+    //public static final int USER_VAIL_RESULT_ZONG = 1;
+    //博客系统
+    public static final int USER_VAIL_RESULT_BLOG = 2;
     //密码错误
     public static final int USER_VAIL_RESULT_PSERR = 3;
     //未激活
@@ -57,6 +57,11 @@ public class UserVo {
     public static final int ROLE_NOT_CLOSE = 0;
     //权限被删除
     public static final int ROLE_IS_DEL = 1;
+    //登录模式
+    public static final int LOGIN_PATTERN=1;
+    //游客模式
+    public static final int VISITOR_PATTERN=2;
+    
 	public List<TMenu> getMenuList() {
 		return menuList;
 	}
@@ -74,6 +79,12 @@ public class UserVo {
 	}
 	public void setMenuJson(String menuJson) {
 		this.menuJson = menuJson;
+	}
+	public int getPattern() {
+		return pattern;
+	}
+	public void setPattern(int pattern) {
+		this.pattern = pattern;
 	}
     
 }

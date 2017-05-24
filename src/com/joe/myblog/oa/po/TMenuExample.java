@@ -164,73 +164,73 @@ public class TMenuExample {
             return (Criteria) this;
         }
 
-        public Criteria andMenuStatusIsNull() {
-            addCriterion("menu_status is null");
+        public Criteria andMenuCreateDateIsNull() {
+            addCriterion("menu_create_date is null");
             return (Criteria) this;
         }
 
-        public Criteria andMenuStatusIsNotNull() {
-            addCriterion("menu_status is not null");
+        public Criteria andMenuCreateDateIsNotNull() {
+            addCriterion("menu_create_date is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMenuStatusEqualTo(String value) {
-            addCriterion("menu_status =", value, "menuStatus");
+        public Criteria andMenuCreateDateEqualTo(String value) {
+            addCriterion("menu_create_date =", value, "menuCreateDate");
             return (Criteria) this;
         }
 
-        public Criteria andMenuStatusNotEqualTo(String value) {
-            addCriterion("menu_status <>", value, "menuStatus");
+        public Criteria andMenuCreateDateNotEqualTo(String value) {
+            addCriterion("menu_create_date <>", value, "menuCreateDate");
             return (Criteria) this;
         }
 
-        public Criteria andMenuStatusGreaterThan(String value) {
-            addCriterion("menu_status >", value, "menuStatus");
+        public Criteria andMenuCreateDateGreaterThan(String value) {
+            addCriterion("menu_create_date >", value, "menuCreateDate");
             return (Criteria) this;
         }
 
-        public Criteria andMenuStatusGreaterThanOrEqualTo(String value) {
-            addCriterion("menu_status >=", value, "menuStatus");
+        public Criteria andMenuCreateDateGreaterThanOrEqualTo(String value) {
+            addCriterion("menu_create_date >=", value, "menuCreateDate");
             return (Criteria) this;
         }
 
-        public Criteria andMenuStatusLessThan(String value) {
-            addCriterion("menu_status <", value, "menuStatus");
+        public Criteria andMenuCreateDateLessThan(String value) {
+            addCriterion("menu_create_date <", value, "menuCreateDate");
             return (Criteria) this;
         }
 
-        public Criteria andMenuStatusLessThanOrEqualTo(String value) {
-            addCriterion("menu_status <=", value, "menuStatus");
+        public Criteria andMenuCreateDateLessThanOrEqualTo(String value) {
+            addCriterion("menu_create_date <=", value, "menuCreateDate");
             return (Criteria) this;
         }
 
-        public Criteria andMenuStatusLike(String value) {
-            addCriterion("menu_status like", value, "menuStatus");
+        public Criteria andMenuCreateDateLike(String value) {
+            addCriterion("menu_create_date like", value, "menuCreateDate");
             return (Criteria) this;
         }
 
-        public Criteria andMenuStatusNotLike(String value) {
-            addCriterion("menu_status not like", value, "menuStatus");
+        public Criteria andMenuCreateDateNotLike(String value) {
+            addCriterion("menu_create_date not like", value, "menuCreateDate");
             return (Criteria) this;
         }
 
-        public Criteria andMenuStatusIn(List<String> values) {
-            addCriterion("menu_status in", values, "menuStatus");
+        public Criteria andMenuCreateDateIn(List<String> values) {
+            addCriterion("menu_create_date in", values, "menuCreateDate");
             return (Criteria) this;
         }
 
-        public Criteria andMenuStatusNotIn(List<String> values) {
-            addCriterion("menu_status not in", values, "menuStatus");
+        public Criteria andMenuCreateDateNotIn(List<String> values) {
+            addCriterion("menu_create_date not in", values, "menuCreateDate");
             return (Criteria) this;
         }
 
-        public Criteria andMenuStatusBetween(String value1, String value2) {
-            addCriterion("menu_status between", value1, value2, "menuStatus");
+        public Criteria andMenuCreateDateBetween(String value1, String value2) {
+            addCriterion("menu_create_date between", value1, value2, "menuCreateDate");
             return (Criteria) this;
         }
 
-        public Criteria andMenuStatusNotBetween(String value1, String value2) {
-            addCriterion("menu_status not between", value1, value2, "menuStatus");
+        public Criteria andMenuCreateDateNotBetween(String value1, String value2) {
+            addCriterion("menu_create_date not between", value1, value2, "menuCreateDate");
             return (Criteria) this;
         }
 

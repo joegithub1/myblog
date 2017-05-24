@@ -234,73 +234,73 @@ public class TAuthExample {
             return (Criteria) this;
         }
 
-        public Criteria andAuthMarkIsNull() {
-            addCriterion("auth_mark is null");
+        public Criteria andAuthPoweridIsNull() {
+            addCriterion("auth_powerid is null");
             return (Criteria) this;
         }
 
-        public Criteria andAuthMarkIsNotNull() {
-            addCriterion("auth_mark is not null");
+        public Criteria andAuthPoweridIsNotNull() {
+            addCriterion("auth_powerid is not null");
             return (Criteria) this;
         }
 
-        public Criteria andAuthMarkEqualTo(String value) {
-            addCriterion("auth_mark =", value, "authMark");
+        public Criteria andAuthPoweridEqualTo(String value) {
+            addCriterion("auth_powerid =", value, "authPowerid");
             return (Criteria) this;
         }
 
-        public Criteria andAuthMarkNotEqualTo(String value) {
-            addCriterion("auth_mark <>", value, "authMark");
+        public Criteria andAuthPoweridNotEqualTo(String value) {
+            addCriterion("auth_powerid <>", value, "authPowerid");
             return (Criteria) this;
         }
 
-        public Criteria andAuthMarkGreaterThan(String value) {
-            addCriterion("auth_mark >", value, "authMark");
+        public Criteria andAuthPoweridGreaterThan(String value) {
+            addCriterion("auth_powerid >", value, "authPowerid");
             return (Criteria) this;
         }
 
-        public Criteria andAuthMarkGreaterThanOrEqualTo(String value) {
-            addCriterion("auth_mark >=", value, "authMark");
+        public Criteria andAuthPoweridGreaterThanOrEqualTo(String value) {
+            addCriterion("auth_powerid >=", value, "authPowerid");
             return (Criteria) this;
         }
 
-        public Criteria andAuthMarkLessThan(String value) {
-            addCriterion("auth_mark <", value, "authMark");
+        public Criteria andAuthPoweridLessThan(String value) {
+            addCriterion("auth_powerid <", value, "authPowerid");
             return (Criteria) this;
         }
 
-        public Criteria andAuthMarkLessThanOrEqualTo(String value) {
-            addCriterion("auth_mark <=", value, "authMark");
+        public Criteria andAuthPoweridLessThanOrEqualTo(String value) {
+            addCriterion("auth_powerid <=", value, "authPowerid");
             return (Criteria) this;
         }
 
-        public Criteria andAuthMarkLike(String value) {
-            addCriterion("auth_mark like", value, "authMark");
+        public Criteria andAuthPoweridLike(String value) {
+            addCriterion("auth_powerid like", value, "authPowerid");
             return (Criteria) this;
         }
 
-        public Criteria andAuthMarkNotLike(String value) {
-            addCriterion("auth_mark not like", value, "authMark");
+        public Criteria andAuthPoweridNotLike(String value) {
+            addCriterion("auth_powerid not like", value, "authPowerid");
             return (Criteria) this;
         }
 
-        public Criteria andAuthMarkIn(List<String> values) {
-            addCriterion("auth_mark in", values, "authMark");
+        public Criteria andAuthPoweridIn(List<String> values) {
+            addCriterion("auth_powerid in", values, "authPowerid");
             return (Criteria) this;
         }
 
-        public Criteria andAuthMarkNotIn(List<String> values) {
-            addCriterion("auth_mark not in", values, "authMark");
+        public Criteria andAuthPoweridNotIn(List<String> values) {
+            addCriterion("auth_powerid not in", values, "authPowerid");
             return (Criteria) this;
         }
 
-        public Criteria andAuthMarkBetween(String value1, String value2) {
-            addCriterion("auth_mark between", value1, value2, "authMark");
+        public Criteria andAuthPoweridBetween(String value1, String value2) {
+            addCriterion("auth_powerid between", value1, value2, "authPowerid");
             return (Criteria) this;
         }
 
-        public Criteria andAuthMarkNotBetween(String value1, String value2) {
-            addCriterion("auth_mark not between", value1, value2, "authMark");
+        public Criteria andAuthPoweridNotBetween(String value1, String value2) {
+            addCriterion("auth_powerid not between", value1, value2, "authPowerid");
             return (Criteria) this;
         }
 
@@ -621,6 +621,66 @@ public class TAuthExample {
 
         public Criteria andAuthMenuIdNotBetween(Integer value1, Integer value2) {
             addCriterion("auth_menu_id not between", value1, value2, "authMenuId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAuthIsDelIsNull() {
+            addCriterion("auth_is_del is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAuthIsDelIsNotNull() {
+            addCriterion("auth_is_del is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAuthIsDelEqualTo(Integer value) {
+            addCriterion("auth_is_del =", value, "authIsDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andAuthIsDelNotEqualTo(Integer value) {
+            addCriterion("auth_is_del <>", value, "authIsDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andAuthIsDelGreaterThan(Integer value) {
+            addCriterion("auth_is_del >", value, "authIsDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andAuthIsDelGreaterThanOrEqualTo(Integer value) {
+            addCriterion("auth_is_del >=", value, "authIsDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andAuthIsDelLessThan(Integer value) {
+            addCriterion("auth_is_del <", value, "authIsDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andAuthIsDelLessThanOrEqualTo(Integer value) {
+            addCriterion("auth_is_del <=", value, "authIsDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andAuthIsDelIn(List<Integer> values) {
+            addCriterion("auth_is_del in", values, "authIsDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andAuthIsDelNotIn(List<Integer> values) {
+            addCriterion("auth_is_del not in", values, "authIsDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andAuthIsDelBetween(Integer value1, Integer value2) {
+            addCriterion("auth_is_del between", value1, value2, "authIsDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andAuthIsDelNotBetween(Integer value1, Integer value2) {
+            addCriterion("auth_is_del not between", value1, value2, "authIsDel");
             return (Criteria) this;
         }
     }

@@ -31,6 +31,14 @@ public interface TMenuAdminRefMapper {
 
     int updateByPrimaryKey(TMenuAdminRef record);
     
+    /**
+    * Title: TMenuAdminRefMapper.java
+    * Description: 根据角色ID查询权限标识
+    * @param rId
+    * @return
+    * @author HuangJian
+    * @date 2017年5月5日
+    */
     List<Map<String, Object>> selectMenuRoleRefMyRoleId(@Param("rId") Integer rId);
     
     /**

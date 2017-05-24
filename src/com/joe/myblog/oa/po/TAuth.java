@@ -5,7 +5,7 @@ public class TAuth {
 
     private String authName;
 
-    private String authMark;
+    private String authPowerid;
 
     private String authComm;
 
@@ -16,6 +16,8 @@ public class TAuth {
     private Integer authOrdernum;
 
     private Integer authMenuId;
+
+    private Integer authIsDel;
 
     public Integer getAuthId() {
         return authId;
@@ -33,12 +35,12 @@ public class TAuth {
         this.authName = authName == null ? null : authName.trim();
     }
 
-    public String getAuthMark() {
-        return authMark;
+    public String getAuthPowerid() {
+        return authPowerid;
     }
 
-    public void setAuthMark(String authMark) {
-        this.authMark = authMark == null ? null : authMark.trim();
+    public void setAuthPowerid(String authPowerid) {
+        this.authPowerid = authPowerid == null ? null : authPowerid.trim();
     }
 
     public String getAuthComm() {
@@ -79,5 +81,13 @@ public class TAuth {
 
     public void setAuthMenuId(Integer authMenuId) {
         this.authMenuId = authMenuId;
+    }
+
+    public Integer getAuthIsDel() {
+        return authIsDel;
+    }
+
+    public void setAuthIsDel(Integer authIsDel) {
+        this.authIsDel = authIsDel;
     }
 }

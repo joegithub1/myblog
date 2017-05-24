@@ -248,21 +248,13 @@
 	<!-- 根据角色id查询 -->
 	<select id="selectAuthByRoleId" parameterType="java.util.Map" resultType="java.util.Map">
 	   <if test="param.rId == 0">
-	     select 
-t_auth.auth_id,
-t_auth.auth_name,
-t_auth.auth_mark,
-t_auth.auth_comm
-from t_auth where t_auth.auth_mark like #{param.flag}
+	     select *
+from t_auth where t_auth.auth_powerid like #{param.flag}
 order by  t_auth.auth_menu_id desc ,t_auth.auth_ordernum desc
 	     
 	   </if>
 	   <if test="param.rId != 0">
- SELECT 
-t_auth.auth_id,
-t_auth.auth_name,
-t_auth.auth_mark,
-t_auth.auth_comm
+ SELECT *
 FROM t_auth
 INNER JOIN t_admin_auth_ref ref
 ON admin_auth_auth_id = auth_id 

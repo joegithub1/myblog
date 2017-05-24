@@ -16,7 +16,7 @@ public class TestController {
 		
 		
 		System.out.println("----------------controller");
-		return "/blog/index";
+		return "/systemManage/tempDemo/form";
 	}
 }
 

@@ -3,7 +3,7 @@ package com.joe.myblog.oa.po;
 public class TMenu {
     private Integer menuId;
 
-    private String menuStatus;
+    private String menuCreateDate;
 
     private String menuPid;
 
@@ -29,12 +29,12 @@ public class TMenu {
         this.menuId = menuId;
     }
 
-    public String getMenuStatus() {
-        return menuStatus;
+    public String getMenuCreateDate() {
+        return menuCreateDate;
     }
 
-    public void setMenuStatus(String menuStatus) {
-        this.menuStatus = menuStatus == null ? null : menuStatus.trim();
+    public void setMenuCreateDate(String menuCreateDate) {
+        this.menuCreateDate = menuCreateDate == null ? null : menuCreateDate.trim();
     }
 
     public String getMenuPid() {

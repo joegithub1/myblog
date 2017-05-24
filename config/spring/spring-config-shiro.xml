@@ -19,8 +19,8 @@
 		<property name="shared" value="true"></property>
 	</bean>
 	
-	<!-- 健身房 -->
-	<bean id="userRealm" class="com.yundongjia.oa.realm.userRealm">
+	
+	<bean id="userRealm" class="com.joe.myblog.oa.realm.UserRealm">
          
 	</bean>
  	 <!--缓存管理器实现类，这里用的是系统自带的-->

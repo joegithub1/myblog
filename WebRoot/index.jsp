@@ -10,6 +10,9 @@
 <title>首页</title>
 <link href="<%=path %>/static/css/base.css" rel="stylesheet">
 <link href="<%=path %>/static/css/index.css" rel="stylesheet">
+<style type="text/css">
+
+</style>
 <!--[if lt IE 9]>
 <script src="<%=path %>/static/js/modernizr.js"></script>
 <![endif]-->
@@ -20,7 +23,6 @@ function t(){
 </script>
 </head>
 <body>
-<button onclick="t();">点击</button>
 <div class="article">
   <div class="content">
     <div class="topblog">

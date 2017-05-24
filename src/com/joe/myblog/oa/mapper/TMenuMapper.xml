@@ -3,7 +3,7 @@
 <mapper namespace="com.joe.myblog.oa.mapper.TMenuMapper" >
   <resultMap id="BaseResultMap" type="com.joe.myblog.oa.po.TMenu" >
     <id column="menu_id" property="menuId" jdbcType="INTEGER" />
-    <result column="menu_status" property="menuStatus" jdbcType="VARCHAR" />
+    <result column="menu_create_date" property="menuCreateDate" jdbcType="VARCHAR" />
     <result column="menu_pid" property="menuPid" jdbcType="VARCHAR" />
     <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
     <result column="menu_ordernum" property="menuOrdernum" jdbcType="INTEGER" />
@@ -72,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    menu_id, menu_status, menu_pid, menu_name, menu_ordernum, menu_isshow, menu_pathname, 
+    menu_id, menu_create_date, menu_pid, menu_name, menu_ordernum, menu_isshow, menu_pathname, 
     menu_isroot, menu_isdel, menu_powerid
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.joe.myblog.oa.po.TMenuExample" >
@@ -109,11 +109,11 @@
     <selectKey resultType="java.lang.Integer" keyProperty="menuId" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into t_menu (menu_status, menu_pid, menu_name, 
+    insert into t_menu (menu_create_date, menu_pid, menu_name, 
       menu_ordernum, menu_isshow, menu_pathname, 
       menu_isroot, menu_isdel, menu_powerid
       )
-    values (#{menuStatus,jdbcType=VARCHAR}, #{menuPid,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}, 
+    values (#{menuCreateDate,jdbcType=VARCHAR}, #{menuPid,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}, 
       #{menuOrdernum,jdbcType=INTEGER}, #{menuIsshow,jdbcType=TINYINT}, #{menuPathname,jdbcType=VARCHAR}, 
       #{menuIsroot,jdbcType=TINYINT}, #{menuIsdel,jdbcType=TINYINT}, #{menuPowerid,jdbcType=VARCHAR}
       )
@@ -124,8 +124,8 @@
     </selectKey>
     insert into t_menu
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="menuStatus != null" >
-        menu_status,
+      <if test="menuCreateDate != null" >
+        menu_create_date,
       </if>
       <if test="menuPid != null" >
         menu_pid,
@@ -153,8 +153,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="menuStatus != null" >
-        #{menuStatus,jdbcType=VARCHAR},
+      <if test="menuCreateDate != null" >
+        #{menuCreateDate,jdbcType=VARCHAR},
       </if>
       <if test="menuPid != null" >
         #{menuPid,jdbcType=VARCHAR},
@@ -194,8 +194,8 @@
       <if test="record.menuId != null" >
         menu_id = #{record.menuId,jdbcType=INTEGER},
       </if>
-      <if test="record.menuStatus != null" >
-        menu_status = #{record.menuStatus,jdbcType=VARCHAR},
+      <if test="record.menuCreateDate != null" >
+        menu_create_date = #{record.menuCreateDate,jdbcType=VARCHAR},
       </if>
       <if test="record.menuPid != null" >
         menu_pid = #{record.menuPid,jdbcType=VARCHAR},
@@ -229,7 +229,7 @@
   <update id="updateByExample" parameterType="map" >
     update t_menu
     set menu_id = #{record.menuId,jdbcType=INTEGER},
-      menu_status = #{record.menuStatus,jdbcType=VARCHAR},
+      menu_create_date = #{record.menuCreateDate,jdbcType=VARCHAR},
       menu_pid = #{record.menuPid,jdbcType=VARCHAR},
       menu_name = #{record.menuName,jdbcType=VARCHAR},
       menu_ordernum = #{record.menuOrdernum,jdbcType=INTEGER},
@@ -245,8 +245,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.joe.myblog.oa.po.TMenu" >
     update t_menu
     <set >
-      <if test="menuStatus != null" >
-        menu_status = #{menuStatus,jdbcType=VARCHAR},
+      <if test="menuCreateDate != null" >
+        menu_create_date = #{menuCreateDate,jdbcType=VARCHAR},
       </if>
       <if test="menuPid != null" >
         menu_pid = #{menuPid,jdbcType=VARCHAR},
@@ -277,7 +277,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.joe.myblog.oa.po.TMenu" >
     update t_menu
-    set menu_status = #{menuStatus,jdbcType=VARCHAR},
+    set menu_create_date = #{menuCreateDate,jdbcType=VARCHAR},
       menu_pid = #{menuPid,jdbcType=VARCHAR},
       menu_name = #{menuName,jdbcType=VARCHAR},
       menu_ordernum = #{menuOrdernum,jdbcType=INTEGER},
@@ -289,6 +289,8 @@
     where menu_id = #{menuId,jdbcType=INTEGER}
   </update>
   
+  
+   
   <!-- 手写SQL -->
 	<resultMap id="MenuVo" type="com.joe.myblog.oa.vo.MenuVo">
 		<id column="menu_id" jdbcType="INTEGER" property="menuId" />
@@ -323,10 +325,12 @@ inner join t_menu
 
 on t_menu_admin_ref.menu_role_menu_id = t_menu.menu_id
 and t_menu_admin_ref.menu_role_role_id = t_role.role_id
+ and t_role.role_id = t_admin.backuser_role_id
 and t_menu.menu_isshow = 1
 and t_menu.menu_isdel = 0
+and t_role.role_isclose = 0 
 and t_admin.backuser_id = #{userId}
-
+group by t_menu.menu_id
 order by t_menu.menu_isroot desc,t_menu.menu_ordernum desc
   </select>
   
@@ -358,8 +362,5 @@ order by t_menu.menu_isroot desc,t_menu.menu_ordernum desc
 	<update id="updateBaseMenuById" parameterType="java.lang.Integer">
 		UPDATE t_menu SET menu_isdel=1 WHERE menu_id=#{id}
 	</update>
-  
-  
-  
   
 </mapper>

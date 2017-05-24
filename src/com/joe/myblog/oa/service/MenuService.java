@@ -101,4 +101,14 @@ public interface MenuService {
     * @date 2016年11月10日
      */
     List<TMenu> selectBaseMenuByPowerid(String pwoerid);
+    
+    /**
+    * Title: MenuService.java
+    * Description: 根据是否根查询菜单
+    * @param isRoot
+    * @return
+    * @author HuangJian
+    * @date 2017年4月4日
+    */
+    public List<TMenu> getMenuByRoot(Integer isRoot);
 }

@@ -15,17 +15,21 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.joe.myblog.oa.mapper.TAdminAuthRefMapper;
 import com.joe.myblog.oa.mapper.TAdminMapper;
+import com.joe.myblog.oa.mapper.TAuthMapper;
 import com.joe.myblog.oa.mapper.TMenuAdminRefMapper;
 import com.joe.myblog.oa.mapper.TRoleMapper;
 import com.joe.myblog.oa.po.TAdmin;
 import com.joe.myblog.oa.po.TAdminAuthRef;
 import com.joe.myblog.oa.po.TAdminAuthRefExample;
+import com.joe.myblog.oa.po.TAuth;
+import com.joe.myblog.oa.po.TAuthExample;
 import com.joe.myblog.oa.po.TMenuAdminRef;
 import com.joe.myblog.oa.po.TMenuAdminRefExample;
 import com.joe.myblog.oa.po.TRole;
 import com.joe.myblog.oa.po.TRoleExample;
 import com.joe.myblog.oa.service.AuthService;
 import com.joe.myblog.oa.utils.ConstantVo;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 @Service
 public class AuthServiceImpl implements AuthService{
@@ -37,6 +41,9 @@ public class AuthServiceImpl implements AuthService{
     private TRoleMapper baseRoleMapper;
     @Autowired
     private TAdminMapper baseUserMapper;
+    @Autowired
+    private TAuthMapper authMapper;
+    
     public SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     @Override
     public int insertRole(TRole role, String[] authStr, String[] menuStr) throws Exception{
@@ -87,17 +94,24 @@ public class AuthServiceImpl implements AuthService{
 
     @Override
     public int delectRoleById(Map<String, Object> param) {
-    	System.out.println("ok");
     	/**
     	 * 删除角色，把拥有角色的用户的role_id改为0
     	 */
     	//把所有用户为roleId的置0
     	int result = baseUserMapper.updateBaseUserRoleByRoleIds(param);
-    	
+    	Integer roleId  = Integer.parseInt(String.valueOf(param.get("roleId")));
+    	//物理删除角色
         TRole role = new TRole();
         role.setRoleIsdel("1");
-        role.setRoleId(Integer.parseInt(String.valueOf(param.get("roleId"))));
+        role.setRoleId(roleId);
         role.setRoleOperatorid(Integer.parseInt(String.valueOf(param.get("operation"))));
+        
+        //删除角色与按钮
+        TMenuAdminRefExample example = new TMenuAdminRefExample();
+        example.createCriteria().andMenuRoleRoleIdEqualTo(roleId);
+        baseMenuUserRefMapper.deleteByExample(example);
+        
+        
         return this.baseRoleMapper.updateByPrimaryKeySelective(role);
     }
 
@@ -319,9 +333,53 @@ public class AuthServiceImpl implements AuthService{
 	    * @date 2016年11月29日
 	     */
 		@Override
-		public List<Map<String, Object>> searchBUByTypeARole(Integer roleId) {
+		public List<Map<String, Object>> selectBUByTypeARole(Integer roleId) {
 			Map<String, Object> param = new HashMap<>();
 			param.put("roleId",roleId);
-			return baseUserMapper.searchBUByTypeARole(param);
+			return baseUserMapper.selectBUByTypeARole(param);
+		}
+
+		@Override
+		public List<Map<String, Object>> findAuths(Integer menuId,Integer authId) {
+			 
+			Map<String, Object> param=new HashMap<>();
+			param.put("authId", authId);
+			param.put("menuId", menuId);
+			
+			return authMapper.findAuths(param);
+		}
+
+		@Override
+		public Integer saveAuth(TAuth auth) {
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			auth.setAuthCreateDate(sdf.format(new Date()));
+			authMapper.insertSelective(auth);
+			return auth.getAuthId();
+		}
+
+		@Override
+		public Integer updateAuth(TAuth auth) {
+			 
+			return authMapper.updateByPrimaryKeySelective(auth);
+		}
+
+		@Override
+		public TAuth getTauthById(Integer authId) {
+			 
+			return authMapper.selectByPrimaryKey(authId);
+		}
+
+		@Override
+		public Integer deleteAuthById(Integer authId) {
+			TAuth record = new TAuth();
+			record.setAuthId(authId);
+			record.setAuthIsDel(0);
+			return authMapper.updateByPrimaryKeySelective(record);
+		}
+
+		@Override
+		public TRole getRoleById(Integer roleId) {
+			
+			return baseRoleMapper.selectByPrimaryKey(roleId);
 		}
 }
