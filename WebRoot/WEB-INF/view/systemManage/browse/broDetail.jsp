@@ -132,6 +132,7 @@ a {
 </div>
 <script type="text/javascript" src="<%=path %>/static/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="<%=path %>/static/js/jquery.tmpl.min.js"></script>
+<script type="text/javascript" src="<%=path %>/static/bootstrap-3.3.7/js/bootstrapValidator.js"></script>
 <script type="text/x-javascript-tmpl" id="commTmpl">
   	    		<div class="col-sm-12">
 				<div class="panel panel-default">
@@ -145,12 +146,33 @@ a {
   	    	  </div>
 </script>
 <script type="text/javascript">
+$(document).ready(function(){
+	$("#form").bootstrapValidator({
+		fields:{
+			plUser:{
+				validators:{
+					notEmpty:{
+						message:'名称必填'
+					}
+				}
+			},
+			plContent:{
+				validators:{
+					notEmpty:{
+						message:'评论内容必填'
+					}
+				}
+			}
+			
+		}
+	});
+});
 function reLoad(){
 	var id = $("#articleId").val();
 	loadRight("<%=path%>/blog/article/detail", {id:id});
 }	
 	function submitComm(){
-		var plUser = $("#plUser").val();
+		/* var plUser = $("#plUser").val();
 		var plContent = $("#plContent").val();
 		var articleId = $("#articleId").val();
 		if(plUser == "" || plUser.length <= 0){
@@ -159,7 +181,11 @@ function reLoad(){
 		}else if(plContent == "" || plContent.length <= 0){
 			layer.msg("评论内容必填",{icon:2});
 			return false;
-		}
+		} */
+		$('#form').data('bootstrapValidator').validate();  
+	    if(!$('#form').data('bootstrapValidator').isValid()){ 
+	        return ;  
+	    }
 		var data=new FormData($("#form")[0]);
 		$.ajax({
 			url:'<%=path%>/blog/comment/save',

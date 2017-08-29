@@ -1,9 +1,7 @@
 package com.joe.myblog.oa.utils;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
 
 public class ConstantVo {
-
 	public static byte IS_NO_DEL=0;
 	
 	public static final String PAGE_SIZE="10";

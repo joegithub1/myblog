@@ -90,8 +90,39 @@
   <script type="text/javascript" src="<%=path %>/static/froala_editor_2.6.0/js/plugins/url.min.js"></script>
   <script type="text/javascript" src="<%=path %>/static/froala_editor_2.6.0/js/plugins/entities.min.js"></script>
   <script type="text/javascript" src="<%=path %>/static/froala_editor_2.6.0/js/languages/zh_cn.js"></script>
+  <script type="text/javascript" src="<%=path %>/static/bootstrap-3.3.7/js/bootstrapValidator.js"></script>
 <script type="text/javascript">
+$(document).ready(function(){
+	$("#form").bootstrapValidator({
+		fields:{
+			title:{
+				validators:{
+					notEmpty:{
+						message:'标题必填'
+					}
+				}
+			},
+			content:{
+				validators:{
+					notEmpty:{
+						message:'正文必填'
+					}
+				}
+			}
+		}
+	});
+});
 	function com(){
+		$('#form').data('bootstrapValidator').validate();  
+	    if(!$('#form').data('bootstrapValidator').isValid()){ 
+	        return ;  
+	    }
+	    var c=$("#froala-editor").val();
+	    if("" == c){
+	    	layer.alert("内容必填",{icon:2});
+	    	return false;
+	    }
+
 		var data = new FormData($("#form")[0]);
 		$.ajax({
 			url:'<%=path%>/blog/articleadmin/saveorupdate',
@@ -103,10 +134,10 @@
 			processData:false,
 			success:function(data){
 				if(data.result > 0){
-					layer.msg(data.message,{icon:1});
+					layer.alert(data.message,{icon:1});
 					loadRight("<%=path%>/blog/articleadmin/list", {});
 				}else{
-					layer.msg(data.message,{icon:2});
+					layer.alert(data.message,{icon:2});
 				}
 				
 			},
